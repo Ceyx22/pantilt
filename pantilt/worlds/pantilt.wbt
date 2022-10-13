@@ -13,7 +13,7 @@ WorldInfo {
 }
 Viewpoint {
   orientation -0.19765599431601422 -0.16155092690014441 0.9668678327096483 4.4791465615308805
-  position 0.21726036844493324 1.4518459417200633 0.6831896226331567
+  position 0.13051908354796193 1.0246806849219703 0.49720366391318715
 }
 TexturedBackground {
 }
@@ -233,13 +233,13 @@ Robot {
       ]
     }
   ]
-  controller "MoveJoints"
+  controller "MoveJoints3"
 }
 FifaSoccerBall {
-  translation -0.4 0.4 0.1122890849999998
+  translation -0.4 0.4 0.11228908499999986
 }
 Apple {
-  translation 0.3 0.4 0.04992642499991705
+  translation 0.3 0.4 0.04992642499999985
 }
 FlowerPot {
   translation 0.4 0.3 0
