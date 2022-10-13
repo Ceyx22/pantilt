@@ -29,7 +29,7 @@ Eigen::Matrix<double, 4, 1>cubicSpline(double initTheta, double finTheta, double
   // Creates a 4x4 matrix for the system of equation
   Eigen::Matrix4d matrix{
   {1.0, initTime, pow(initTime, 2.0), pow(initTime, 3.0)}, 
-  {0.0, 1.0, 2.0 * initTime, 3.0 * pow(initTime, 2.0)},
+  {0.0, 1.0, 2.0 * initTime, 3.0 * pow(initTime, 3.0)},
   {1.0, finTime, pow(finTime, 2.0), pow(finTime, 3.0)},
   {0.0, 1.0, 2.0 * finTime, 3.0 * pow(finTime, 2.0)}
   };
@@ -67,24 +67,24 @@ int main(int argc, char **argv) {
   
   for (int i = 0; i < 2; i++){
     rotMotors[i] = robot->getMotor(motors_Names[i]);
-    // rotMotors[i]->setPosition(0.0);
-    // rotMotors[i]->setVelocity(0.0);
+    //rotMotors[i]->setPosition(0.0);
+    //rotMotors[i]->setVelocity(0.0);
   }
 
   vector<double> panPos;
   vector<double> tiltPos;
-
+  
   panPos.push_back(0.0);
   tiltPos.push_back(0.0);
 
   //Pan movement spline calculations
   Eigen::Matrix<double, 4, 1> applePanMovement{cubicSpline(0.0, 7.0 * M_PI / 4.0, 0.0, 0.0, 0.0, 2.0)};
-  Eigen::Matrix<double, 4, 1> ballPanMovement{cubicSpline(7.0 * M_PI / 4.0, M_PI / 4.0, 0.0, 0.0, 2.0, 5.0)};
-  Eigen::Matrix<double, 4, 1> origionPanMovement{cubicSpline(M_PI / 4.0, 0.0, 0.0, 0.0, 5.0, 7.0)};
+  Eigen::Matrix<double, 4, 1> ballPanMovement{cubicSpline(7.0 * M_PI / 4.0, M_PI / 4.0, 0.0, M_PI/2.0, 2.0 ,5.0)};
+  Eigen::Matrix<double, 4, 1> origionPanMovement{cubicSpline(M_PI / 4.0, 0.0, M_PI/2.0, 0.0, 5.0, 7.0)};
 
   //Tilt movement Spline Calculations
-  Eigen::Matrix<double, 4, 1> appleTiltMovement{cubicSpline(0.0, M_PI / 6.0 + 0.2, 0.0, 0.0, 0.0, 2.0)};
-  Eigen::Matrix<double, 4, 1> ballTiltMovement{cubicSpline(M_PI / 6.0 + 0.2, M_PI / 6.0 + 0.15, 0.0, 0.0, 2.0, 5.0)};
+  Eigen::Matrix<double, 4, 1> appleTiltMovement{cubicSpline(0.0, M_PI / 6.0 + 0.2, 0.0, 0.0, M_PI / 2.0, 2.0)};
+  Eigen::Matrix<double, 4, 1> ballTiltMovement{cubicSpline(M_PI / 6.0 + 0.2, M_PI / 6.0 + 0.15, M_PI/2, 0.0, 2.0, 5.0)};
   Eigen::Matrix<double, 4, 1> origionTiltMovement{cubicSpline(M_PI / 6.0 + 0.15, 0.0, 0.0, 0.0, 5.0, 7.0)};
 
 

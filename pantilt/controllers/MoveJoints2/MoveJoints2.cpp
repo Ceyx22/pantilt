@@ -43,8 +43,8 @@ int main(int argc, char **argv) {
   vector<double> panPos;
   vector<double> tiltPos;
 
-  // panPos.push_back(0.0);
-  // tiltPos.push_back(0.0);
+  panPos.push_back(0.0);
+  tiltPos.push_back(0.0);
 
   while (robot->step(TIME_STEP) != -1) {
     double t = robot->getTime();
